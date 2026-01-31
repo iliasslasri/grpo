@@ -26,7 +26,6 @@ def train_step(model, tokenizer, prompt, group_size=8):
         content = tokenizer.decode(outputs[i][prompt_len:], skip_special_tokens=True)
         completions.append(content)
         rewards.append(reward_function(content))
-        print("content", content)
     
     reward_tensor = torch.tensor(rewards, dtype=torch.float32, device="cuda")
     
